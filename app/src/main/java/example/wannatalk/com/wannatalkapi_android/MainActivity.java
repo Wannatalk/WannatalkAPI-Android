@@ -40,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void loadOrganizationProfile() {
-        WTAppDataManager.LoadOrganizationActivity(this);
+
+//        1. Load organization profile with otp verification
+//        WTAppDataManager.LoadOrganizationActivity(this);
+//                or
+//        2. Load organization profile without otp verification
+        String phone_number = "your_phone_number";
+        WTAppDataManager.LoadOrganizationActivity(phone_number, this);
     }
 
     @Override
