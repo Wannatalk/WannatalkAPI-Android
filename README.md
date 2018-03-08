@@ -54,7 +54,13 @@ dependencies
 ```
 4. Copy  **wannatalk-services.json** file to your application assets directory
 5. Add below line in **onCreate** function of your main activity
-> `WTAppDataManager.InitializeSDK();`	
-6. Invoke below line to load your organization profile
-> `WTAppDataManager.LoadOrganizationActivity(this);`
-7. `Build and Run`  your app to test out the integration
+```
+WTAppDataManager.InitializeSDK();
+```
+
+## To load your organization profile
+    WTAppDataManager.LoadOrganizationActivity(this);
+
+## To load your organization profile without otp verification
+    String phone_number = <your_phone_number>;
+    WTAppDataManager.LoadOrganizationActivity(phone_number, this);
