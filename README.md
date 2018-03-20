@@ -57,10 +57,19 @@ dependencies
 ```
 WTAppDataManager.InitializeSDK();
 ```
+## To link Wannatalk account
+    WTAppDataManager.StartLoginActivity(this);
 
-## To load your organization profile
+## To link Wannatalk account without otp verification
+    WTAppDataManager.SilentLoginActivity(phone_number, this);
+
+## HelpDesk
+### To load your organization profile
     WTAppDataManager.LoadOrganizationActivity(this);
-
-## To load your organization profile without otp verification
-    String phone_number = <your_phone_number>;
-    WTAppDataManager.LoadOrganizationActivity(phone_number, this);
+    
+## Collaboration
+### To view all chats
+    WTAppDataManager.LoadChatListActivity(this);
+    
+### To view all users
+    WTAppDataManager.LoadUsersActivity(this);
