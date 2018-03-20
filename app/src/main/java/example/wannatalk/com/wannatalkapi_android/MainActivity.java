@@ -7,13 +7,17 @@ import android.view.View;
 import android.widget.Button;
 
 
+import wannatalk.wannatalksdk.WTCore.Interface.IWTLoginManager;
 import wannatalk.wannatalksdk.WTCore.WTAppDataManager;
 import wannatalk.wannatalksdk.WTCore.WTSDKConstants;
+import wannatalk.wannatalksdk.WTLogin.WTLoginManager;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_org_profile;
-    Button btn_sign_out;
+    Button btn_login;
+    Button btn_silent_login;
+    Button btn_logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +25,26 @@ public class MainActivity extends AppCompatActivity {
 
         WTAppDataManager.InitializeSDK();
 
+        WTLoginManager.setIwtLoginManager(iwtLoginManager);
+
+        btn_login = (Button) findViewById(R.id.btn_login);
+        btn_silent_login = (Button) findViewById(R.id.btn_silent_login);
         btn_org_profile = (Button) findViewById(R.id.btn_org_profile);
-        btn_sign_out = (Button) findViewById(R.id.btn_sign_out);
+        btn_logout = (Button) findViewById(R.id.btn_logout);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
+
+        btn_silent_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                silentLogin();
+            }
+        });
 
         btn_org_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,30 +53,78 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_sign_out.setOnClickListener(new View.OnClickListener() {
+        btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WTAppDataManager.Reset(null);
+                logout();
             }
         });
+
+
+        updateButtons();
     }
+
+    void login() {
+//        Authentication
+        WTAppDataManager.StartLoginActivity(this);
+    }
+
+    void silentLogin() {
+
+//        Silent authentication without otp verification
+        String phone_number = "your_phone_number";
+        WTAppDataManager.SilentLoginActivity(phone_number, this);
+    }
+
 
     void loadOrganizationProfile() {
 
-//        1. Load organization profile with otp verification
-//        WTAppDataManager.LoadOrganizationActivity(this);
-//                or
-//        2. Load organization profile without otp verification
-        String phone_number = "your_phone_number";
-        WTAppDataManager.LoadOrganizationActivity(phone_number, this);
+//        Load organization profile
+        WTAppDataManager.LoadOrganizationActivity(this);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    void loadChatList() {
 
-        if (requestCode == WTSDKConstants.RC_WANNATALK && resultCode == RESULT_OK) {
+//        Load chat list
+        WTAppDataManager.LoadChatListActivity(this);
+    }
 
-            loadOrganizationProfile();
+    void loadUsers() {
+
+//        Load users
+        WTAppDataManager.LoadUsersActivity(this);
+    }
+
+    void logout() {
+        WTAppDataManager.Reset(this);
+    }
+
+    IWTLoginManager iwtLoginManager = new IWTLoginManager() {
+        @Override
+        public void wtsdkUserLoggedOut() {
+            updateButtons();
+        }
+
+        @Override
+        public void wtsdkUserLoggedIn() {
+            updateButtons();
+        }
+    };
+
+    void updateButtons() {
+
+        boolean userLoggedIn = WTLoginManager.IsUserLoggedIn();
+        if (userLoggedIn) {
+            btn_login.setVisibility(View.GONE);
+            btn_silent_login.setVisibility(View.GONE);
+            btn_org_profile.setVisibility(View.VISIBLE);
+            btn_logout.setVisibility(View.VISIBLE);
+        }
+        else {
+            btn_login.setVisibility(View.VISIBLE);
+            btn_silent_login.setVisibility(View.VISIBLE);
+            btn_org_profile.setVisibility(View.GONE);
+            btn_logout.setVisibility(View.GONE);
         }
     }
 }
