@@ -34,7 +34,9 @@ dependencies
 	compile 'com.facebook.fresco:fresco:1.5.0'  
 	compile 'com.facebook.fresco:animated-gif:1.5.0'  
 	compile "com.android.support:support-core-utils:25.3.1"  
-  
+
+    compile 'co.lujun:androidtagview:1.1.4'
+
 	compile 'com.google.guava:guava:23.0-android'  
 	compile 'me.saket:better-link-movement-method:1.2'  
 	compile 'com.arasthel:asyncjob-library:1.0.3'  
