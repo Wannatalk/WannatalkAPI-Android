@@ -72,15 +72,17 @@ public class MainActivity extends AppCompatActivity {
     void silentLogin() {
 
 //        Silent authentication without otp verification
-        String phone_number = "your_phone_number";
-        WTAppDataManager.SilentLoginActivity(phone_number, this);
+        Bundle bundle = new Bundle();
+        bundle.putString("key1", "value1");
+        bundle.putString("key2", "value2");
+        WTAppDataManager.SilentLoginActivity("your_phone_number", bundle, this);
     }
 
 
     void loadOrganizationProfile() {
 
 //        Load organization profile
-        WTAppDataManager.LoadOrganizationActivity(this);
+        WTAppDataManager.LoadOrganizationActivity(this, true);
     }
 
     void loadChatList() {

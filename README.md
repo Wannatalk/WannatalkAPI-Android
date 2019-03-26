@@ -63,11 +63,17 @@ WTAppDataManager.InitializeSDK();
     WTAppDataManager.StartLoginActivity(this);
 
 ## To link Wannatalk account without otp verification
-    WTAppDataManager.SilentLoginActivity(phone_number, this);
+    Bundle bundle = new Bundle();
+    bundle.putString("key1", "value1");
+    bundle.putString("key2", "value2");
+    WTAppDataManager.SilentLoginActivity("your_phone_number", bundle, this);
 
 ## HelpDesk
 ### To load your organization profile
-    WTAppDataManager.LoadOrganizationActivity(this);
+    // LoadOrganizationActivity(Activity activity, boolean autoOpenChat)
+    // Recent chat page will be opened when click on channel if autoOpenChat is true, otherwise chat list page will be opened.
+    
+    WTAppDataManager.LoadOrganizationActivity(this, true);
     
 ## Collaboration
 ### To view all chats
@@ -75,3 +81,8 @@ WTAppDataManager.InitializeSDK();
     
 ### To view all users
     WTAppDataManager.LoadUsersActivity(this);
+
+## Push notifications
+1. Create android app in Firebase console
+2. Download google-services.json configuration file and move it into the same directory as your root-level build.gradle file. 
+3. Share us your Firebase project server key. You will find it in Cloud messaging tab of your Firebase project settings.(Open project in Firebase > Project Settings > Cloud Messaging)
