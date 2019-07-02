@@ -33,11 +33,9 @@ dependencies
   
 	compile 'com.facebook.fresco:fresco:1.5.0'  
 	compile 'com.facebook.fresco:animated-gif:1.5.0'  
-	compile "com.android.support:support-core-utils:25.3.1"  
+	compile "com.android.support:support-core-utils:25.3.1"
 
-    compile 'co.lujun:androidtagview:1.1.4'
-
-	compile 'com.google.guava:guava:23.0-android'  
+  	compile 'com.google.guava:guava:23.0-android'  
 	compile 'me.saket:better-link-movement-method:1.2'  
 	compile 'com.arasthel:asyncjob-library:1.0.3'  
   
@@ -86,3 +84,7 @@ WTAppDataManager.InitializeSDK();
 1. Create android app in Firebase console
 2. Download google-services.json configuration file and move it into the same directory as your root-level build.gradle file. 
 3. Share us your Firebase project server key. You will find it in Cloud messaging tab of your Firebase project settings.(Open project in Firebase > Project Settings > Cloud Messaging)
+
+## Other
+### Show or hide guide button
+    WTAppDataManager.ShowGuideButton(false);
