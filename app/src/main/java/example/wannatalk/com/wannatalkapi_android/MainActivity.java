@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         WTAppDataManager.InitializeSDK();
 
+        WTAppDataManager.ShowGuideButton(false);
+        WTAppDataManager.AllowAddParticipants(false);
+        WTAppDataManager.AllowSendAudioMessage(false);
+
         WTLoginManager.setIwtLoginManager(iwtLoginManager);
 
         btn_login = (Button) findViewById(R.id.btn_login);
