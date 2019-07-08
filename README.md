@@ -88,4 +88,13 @@ WTAppDataManager.InitializeSDK();
 
 ## Other
 ### Show or hide guide button
-    WTAppDataManager.ShowGuideButton(false);
+    WTAppDataManager.ShowGuideButton(false); // Default Value: true
+    
+### To show or hide Add Participants in chat item profile
+    WTAppDataManager.AllowAddParticipants(false); // Default Value: true
+
+### To show or hide microphone in chat page
+    WTAppDataManager.AllowSendAudioMessage(false); // Default Value: true
+
+### To show or hide welcome message
+    WTAppDataManager.ShowWelcomeMessage(false); // Default Value: false
