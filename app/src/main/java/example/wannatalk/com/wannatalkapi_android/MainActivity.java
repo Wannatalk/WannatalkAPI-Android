@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         WTAppDataManager.InitializeSDK();
 
         WTAppDataManager.ShowGuideButton(false);
+        WTAppDataManager.ShowProfileInfoPage(false);
         WTAppDataManager.AllowAddParticipants(false);
         WTAppDataManager.AllowSendAudioMessage(false);
 

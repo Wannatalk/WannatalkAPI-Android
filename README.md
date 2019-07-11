@@ -90,6 +90,9 @@ WTAppDataManager.InitializeSDK();
 ### Show or hide guide button
     WTAppDataManager.ShowGuideButton(false); // Default Value: true
     
+### To show or hide Profile Info page
+    WTAppDataManager.ShowProfileInfoPage(false); // Default Value: true
+
 ### To show or hide Add Participants in chat item profile
     WTAppDataManager.AllowAddParticipants(false); // Default Value: true
 
