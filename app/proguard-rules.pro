@@ -16,4 +16,3 @@
 #   public *;
 #}
 
--dontwarn microsoft.aspnet.signalr.client.transport.**
