@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         WTAppDataManager.ShowProfileInfoPage(false);
         WTAppDataManager.AllowAddParticipants(false);
         WTAppDataManager.AllowSendAudioMessage(false);
+        WTAppDataManager.EnableAutoTickets(true);
 
         WTLoginManager.setIwtLoginManager(iwtLoginManager);
 

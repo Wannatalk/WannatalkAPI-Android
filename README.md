@@ -103,3 +103,6 @@ WTAppDataManager.InitializeSDK();
 
 ### To show or hide welcome message
     WTAppDataManager.ShowWelcomeMessage(false); // Default Value: false
+
+### To create auto tickets: All tickets will create automatically when autotickets is true, otherwise user have to enter subject to create ticket
+    WTAppDataManager.EnableAutoTickets(true); // Default Value: false
