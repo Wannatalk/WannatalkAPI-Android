@@ -106,3 +106,12 @@ WTAppDataManager.InitializeSDK();
 
 ### To create auto tickets: All tickets will create automatically when autotickets is true, otherwise user have to enter subject to create ticket
     WTAppDataManager.EnableAutoTickets(true); // Default Value: false
+
+### To enable or disbale chat profile page
+    WTAppDataManager.EnableChatProfile(false); // Default Value: true
+
+### To show or hide close button in chat page
+    WTAppDataManager.ShowExitButton(true);  // Default Value: false
+
+### To show or hide participants in chat profile page
+    WTAppDataManager.ShowChatParticipants(false); // Default Value: true

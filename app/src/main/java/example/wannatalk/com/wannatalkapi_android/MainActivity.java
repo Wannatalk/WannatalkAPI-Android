@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         WTLoginManager.setIwtLoginManager(iwtLoginManager);
 
+
+        WTAppDataManager.ShowExitButton(true);
+        WTAppDataManager.EnableChatProfile(false);
+//        WTAppDataManager.ShowChatParticipants(false);
+
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_silent_login = (Button) findViewById(R.id.btn_silent_login);
         btn_org_profile = (Button) findViewById(R.id.btn_org_profile);
