@@ -58,30 +58,33 @@ dependencies
 4. Copy  **wannatalk-services.json** file to your application assets directory
 5. Add below line in **onCreate** function of your main activity
 ```
-WTAppDataManager.InitializeSDK();
+WTSDKManager.InitializeSDK();
 ```
 ## To link Wannatalk account
-    WTAppDataManager.StartLoginActivity(this);
+    WTLoginManager.StartLoginActivity(this);
 
-## To link Wannatalk account without otp verification
+## To link Wannatalk account with user credentials
     Bundle bundle = new Bundle();
     bundle.putString("key1", "value1");
     bundle.putString("key2", "value2");
-    WTAppDataManager.SilentLoginActivity("your_phone_number", bundle, this);
-
+    WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
+    
+## To unlink Wannatalk account
+    WTLoginManager.Logout(this);
+    
 ## HelpDesk
 ### To load your organization profile
     // LoadOrganizationActivity(Activity activity, boolean autoOpenChat)
     // Recent chat page will be opened when click on channel if autoOpenChat is true, otherwise chat list page will be opened.
     
-    WTAppDataManager.LoadOrganizationActivity(this, true);
+    WTSDKManager.LoadOrganizationActivity(this, true);
     
 ## Collaboration
 ### To view all chats
-    WTAppDataManager.LoadChatListActivity(this);
+    WTSDKManager.LoadChatListActivity(this);
     
 ### To view all users
-    WTAppDataManager.LoadUsersActivity(this);
+    WTSDKManager.LoadUsersActivity(this);
 
 ## Push notifications
 1. Create android app in Firebase console
@@ -89,29 +92,46 @@ WTAppDataManager.InitializeSDK();
 3. Share us your Firebase project server key. You will find it in Cloud messaging tab of your Firebase project settings.(Open project in Firebase > Project Settings > Cloud Messaging)
 
 ## Other
-### Show or hide guide button
-    WTAppDataManager.ShowGuideButton(false); // Default Value: true
-    
-### To show or hide Profile Info page
-    WTAppDataManager.ShowProfileInfoPage(false); // Default Value: true
+### To show or hide guide button
+    WTSDKManager.ShowGuideButton(false);               // default = YES
 
-### To show or hide Add Participants in chat item profile
-    WTAppDataManager.AllowAddParticipants(false); // Default Value: true
+### To enable or disable sending audio message
+    WTSDKManager.AllowSendAudioMessage(false);  // default = YES
 
-### To show or hide microphone in chat page
-    WTAppDataManager.AllowSendAudioMessage(false); // Default Value: true
+### To show or hide add participants option in new ticket page and chat item profile page
+    WTSDKManager.AllowAddParticipants(false);    // default = YES
+
+### To show or hide remove participants option in chat item profile
+    WTSDKManager.AllowRemoveParticipants(false); // default = NO
 
 ### To show or hide welcome message
-    WTAppDataManager.ShowWelcomeMessage(false); // Default Value: false
+    WTSDKManager.ShowWelcomeMessage(false);            // default = NO
 
-### To create auto tickets: All tickets will create automatically when autotickets is true, otherwise user have to enter subject to create ticket
-    WTAppDataManager.EnableAutoTickets(true); // Default Value: false
+### To show or hide Profile Info page
+    WTSDKManager.ShowProfileInfoPage(false);           // default = YES
 
-### To enable or disbale chat profile page
-    WTAppDataManager.EnableChatProfile(false); // Default Value: true
+### To create auto tickets: 
+Chat ticket will create automatically when auto tickets is enabled, otherwise default ticket creation page will popup
 
-### To show or hide close button in chat page
-    WTAppDataManager.ShowExitButton(true);  // Default Value: false
+    WTSDKManager.EnableAutoTickets(true);           // default = NO
+
+### To show or hide close chat button in chat page
+    WTSDKManager.ShowExitButton(true);               // default = NO
 
 ### To show or hide participants in chat profile page
-    WTAppDataManager.ShowChatParticipants(false); // Default Value: true
+    WTSDKManager.ShowChatParticipants(false);          // default = YES
+
+### To enable or disbale chat profile page
+    WTSDKManager.EnableChatProfile(false);           // default = YES
+
+### To allow modify in chat profile page
+    WTSDKManager.AllowModifyChatProfile(false);       // default = YES
+
+### To set Inactive chat timeout:  
+Chat session will end if user is inactive for timeout interval duration. If timeout interval is 0, chat session will not end automatically. The default timout interval is 1800 seconds (30 minutes).
+
+    long timeoutInterval = 1800; // Default Value: 1800 seconds ~ 30 minutes
+    WTSDKManager.SetInactiveChatTimeoutInterval(timeoutInterval);
+
+
+

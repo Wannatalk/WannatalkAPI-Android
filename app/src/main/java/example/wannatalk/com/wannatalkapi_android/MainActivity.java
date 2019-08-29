@@ -8,7 +8,7 @@ import android.widget.Button;
 
 
 import wannatalk.wannatalksdk.WTCore.Interface.IWTLoginManager;
-import wannatalk.wannatalksdk.WTCore.WTAppDataManager;
+import wannatalk.wannatalksdk.WTCore.WTSDKManager;
 import wannatalk.wannatalksdk.WTCore.WTSDKConstants;
 import wannatalk.wannatalksdk.WTLogin.WTLoginManager;
 
@@ -23,20 +23,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WTAppDataManager.InitializeSDK();
+        WTSDKManager.InitializeSDK();
 
-        WTAppDataManager.ShowGuideButton(false);
-        WTAppDataManager.ShowProfileInfoPage(false);
-        WTAppDataManager.AllowAddParticipants(false);
-        WTAppDataManager.AllowSendAudioMessage(false);
-        WTAppDataManager.EnableAutoTickets(true);
+        WTSDKManager.ShowGuideButton(false);
+        WTSDKManager.ShowProfileInfoPage(false);
+        WTSDKManager.AllowAddParticipants(false);
+        WTSDKManager.AllowSendAudioMessage(false);
+        WTSDKManager.EnableAutoTickets(true);
 
         WTLoginManager.setIwtLoginManager(iwtLoginManager);
 
 
-        WTAppDataManager.ShowExitButton(true);
-        WTAppDataManager.EnableChatProfile(false);
-//        WTAppDataManager.ShowChatParticipants(false);
+        WTSDKManager.ShowExitButton(true);
+        WTSDKManager.EnableChatProfile(false);
+
+//        WTSDKManager.SetInactiveChatTimeoutInterval(1800);
+
 
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_silent_login = (Button) findViewById(R.id.btn_silent_login);
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     void login() {
 //        Authentication
-        WTAppDataManager.StartLoginActivity(this);
+        WTLoginManager.StartLoginActivity(this);
     }
 
     void silentLogin() {
@@ -86,30 +88,30 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("key1", "value1");
         bundle.putString("key2", "value2");
-        WTAppDataManager.SilentLoginActivity("your_phone_number", bundle, this);
+        WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
     }
 
 
     void loadOrganizationProfile() {
 
 //        Load organization profile
-        WTAppDataManager.LoadOrganizationActivity(this, true);
+        WTSDKManager.LoadOrganizationActivity(this, true);
     }
 
     void loadChatList() {
 
 //        Load chat list
-        WTAppDataManager.LoadChatListActivity(this);
+        WTSDKManager.LoadChatListActivity(this);
     }
 
     void loadUsers() {
 
 //        Load users
-        WTAppDataManager.LoadUsersActivity(this);
+        WTSDKManager.LoadUsersActivity(this);
     }
 
     void logout() {
-        WTAppDataManager.Reset(this);
+        WTLoginManager.Logout(this);
     }
 
     IWTLoginManager iwtLoginManager = new IWTLoginManager() {
