@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WTSDKManager.InitializeSDK();
+//        WTSDKManager.InitializeSDK();
 
         WTSDKManager.ShowGuideButton(false);
         WTSDKManager.ShowProfileInfoPage(false);
