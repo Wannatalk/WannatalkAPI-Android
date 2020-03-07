@@ -1,17 +1,12 @@
 # WannatalkAPI-Android
 The official Wannatalk Messenger Android API
-## To run sample example
-1. Request **wannatalk-services.json** from wannatalk.co
-
-2. Copy **wannatalk-services.json** file to sample application `assets` directory
-<img src="Screenshots/Screenshot1.png" width="350">
-
-3. That's it! Run the app
 
 ## Steps to integrate wannatalk library into your project
+1. Request **wannatalk-services.json** from [wannatalk.ai](https://wannatalk.ai) and copy it into your application `assets` directory
+<img src="Screenshots/Screenshot1.png" width="350">
 
-1. Download [wannatalk.aar](wannatalksdk/wannatalksdk.aar) and import into your application
-2. Enable `multiDexEnabled` and add below `dependencies` in your application **build.gradle**
+2. Enable `multiDexEnabled` and add `wannatalk dependency` in your application **build.gradle**
+
 ```
 android {
 	defaultConfig {
@@ -23,41 +18,16 @@ android {
 
 dependencies 
 {
-	implementation "com.android.support:design:28.0.0"
-	implementation "com.android.support:recyclerview-v7:28.0.0"
-	implementation "com.android.support:cardview-v7:28.0.0"
-	implementation "com.android.support:palette-v7:28.0.0"
-	implementation "com.android.support:support-core-utils:28.0.0"
-	implementation "com.android.support:customtabs:28.0.0"
-
-	implementation "com.arasthel:asyncjob-library:1.0.3"
-	implementation "com.squareup:otto:1.3.8"
-
-	implementation "com.squareup.retrofit2:retrofit:2.3.0"
-	implementation "com.squareup.retrofit2:converter-gson:2.0.2"
-	implementation "com.google.code.gson:gson:2.8.2"
-	implementation "com.android.support:multidex:1.0.2"
-	implementation "commons-io:commons-io:2.4"
-
-	implementation "com.github.bumptech.glide:glide:3.7.0"
-	implementation "jp.wasabeef:glide-transformations:2.0.1"
-	implementation "com.facebook.fresco:fresco:1.5.0"
-	implementation "com.facebook.fresco:animated-gif:1.5.0"
-
-
-	implementation "com.amazonaws:aws-android-sdk-core:2.15.2"
-	implementation "com.amazonaws:aws-android-sdk-s3:2.15.2"
-
-	implementation "com.google.guava:guava:23.0-android"
-	implementation "me.saket:better-link-movement-method:1.2"
+	implementation 'com.wannatalk.core:wannatalk:1.0.0'
 }
 ```
-3. Copy  **wannatalk-services.json** file to your application assets directory
+3. That's it! Run the app
 
 ## To link Wannatalk account
 ```java
 WTLoginManager.StartLoginActivity(this);
 ```
+
 ## To link Wannatalk account with user credentials
 ```java
 Bundle bundle = new Bundle();
