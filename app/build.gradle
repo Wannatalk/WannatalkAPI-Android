@@ -24,61 +24,16 @@ android {
     }
 }
 
-
-ext {
-
-    supportLibVersion = "28.0.0"
-    asyncLibVersion = "1.0.3"
-
-    ottoLibVersion = "1.3.8"
-    retrofitLibVersion = "2.3.0"
-    retrofitGsonLibVersion = "2.0.2"
-    gsonLibVersion = "2.8.2"
-    multiDexLibVersion = "1.0.2"
-    commonsIOLibVersion = "2.4"
-    glideLibVersion = "3.7.0"
-    glideTransLibVersion = "2.0.1"
-    frescoLibVersion = "1.5.0"
-    awsLibVersion = "2.15.2"
-    guavaLibVersion = "23.0-android"
-    linkMovementLibVersion = "1.2"
-    googleLibVersion = "17.4.0"
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':wannatalksdk')
+    implementation "com.android.support:appcompat-v7:28.0.0"
+    implementation 'com.wannatalk.core:wannatalk:1.0.0'
 
-    implementation "com.android.support:appcompat-v7:$supportLibVersion"
-    implementation "com.android.support:support-v4:$supportLibVersion"
-    implementation "com.android.support:design:${supportLibVersion}"
-    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
-    implementation "com.android.support:cardview-v7:${supportLibVersion}"
-    implementation "com.android.support:palette-v7:${supportLibVersion}"
-    implementation "com.arasthel:asyncjob-library:${asyncLibVersion}"
-    implementation "com.squareup:otto:${ottoLibVersion}"
-
-    implementation "com.squareup.retrofit2:retrofit:${retrofitLibVersion}"
-    implementation "com.squareup.retrofit2:converter-gson:${retrofitGsonLibVersion}"
-    implementation "com.google.code.gson:gson:${gsonLibVersion}"
-    implementation "com.android.support:multidex:${multiDexLibVersion}"
-    implementation "commons-io:commons-io:${commonsIOLibVersion}"
-
-    implementation "com.github.bumptech.glide:glide:${glideLibVersion}"
-    implementation "jp.wasabeef:glide-transformations:${glideTransLibVersion}"
-    implementation "com.facebook.fresco:fresco:${frescoLibVersion}"
-    implementation "com.facebook.fresco:animated-gif:${frescoLibVersion}"
-    implementation "com.android.support:support-core-utils:${supportLibVersion}"
-
-    implementation "com.amazonaws:aws-android-sdk-core:${awsLibVersion}"
-    implementation "com.amazonaws:aws-android-sdk-s3:${awsLibVersion}"
-
-    implementation "com.google.guava:guava:${guavaLibVersion}"
-    implementation "me.saket:better-link-movement-method:${linkMovementLibVersion}"
-
-    implementation "com.android.support:customtabs:${supportLibVersion}"
-
+//    implementation ('com.wannatalk.core:wannatalk:1.0.0') {
+//        exclude group: 'com.amazonaws', module: 'aws-android-sdk-core'
+//        exclude group: 'com.amazonaws', module: 'aws-android-sdk-s3'
+//    }
 
     implementation 'com.google.firebase:firebase-messaging:17.4.0'
 }
