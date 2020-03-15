@@ -18,7 +18,7 @@ android {
 
 dependencies 
 {
-	implementation 'com.wannatalk.core:wannatalk:1.0.0'
+	implementation 'com.wannatalk.core:wannatalk:1.0.2'
 }
 ```
 3. That's it! Run the app
@@ -31,6 +31,7 @@ WTLoginManager.StartLoginActivity(this);
 ## To link Wannatalk account with user credentials
 ```java
 Bundle bundle = new Bundle();
+bundle.putString("displayname", "<name>");
 bundle.putString("key1", "value1");
 bundle.putString("key2", "value2");
 WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);

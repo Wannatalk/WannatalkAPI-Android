@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 
+import wannatalk.wannatalksdk.WTCore.Interface.IWTCompletion;
 import wannatalk.wannatalksdk.WTCore.Interface.IWTLoginManager;
+import wannatalk.wannatalksdk.WTCore.Interface.IWTObject;
 import wannatalk.wannatalksdk.WTCore.WTSDKManager;
 import wannatalk.wannatalksdk.WTCore.WTSDKConstants;
 import wannatalk.wannatalksdk.WTLogin.WTLoginManager;
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        Silent authentication without otp verification
         Bundle bundle = new Bundle();
+        bundle.putString("displayname", "<name>");
         bundle.putString("key1", "value1");
         bundle.putString("key2", "value2");
         WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
@@ -95,19 +98,35 @@ public class MainActivity extends AppCompatActivity {
     void loadOrganizationProfile() {
 
 //        Load organization profile
-        WTSDKManager.LoadOrganizationActivity(this, true);
+        WTSDKManager.LoadOrganizationActivity(this, true, new IWTCompletion() {
+            @Override
+            public void onCompletion(boolean b, String s) {
+
+            }
+        });
+
     }
 
     void loadChatList() {
 
 //        Load chat list
-        WTSDKManager.LoadChatListActivity(this);
+        WTSDKManager.LoadChatListActivity(this, new IWTCompletion() {
+            @Override
+            public void onCompletion(boolean b, String s) {
+
+            }
+        });
     }
 
     void loadUsers() {
 
 //        Load users
-        WTSDKManager.LoadUsersActivity(this);
+        WTSDKManager.LoadUsersActivity(this, new IWTCompletion() {
+            @Override
+            public void onCompletion(boolean b, String s) {
+
+            }
+        });
     }
 
     void logout() {
@@ -123,6 +142,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void wtsdkUserLoggedIn() {
             updateButtons();
+        }
+
+        @Override
+        public void wtsdkUserLoginFailed(String s) {
+
+        }
+
+        @Override
+        public void wtsdkUserLogoutFailed(String s) {
+
         }
     };
 
