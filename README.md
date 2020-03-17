@@ -40,21 +40,54 @@ WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
 ```java
 WTLoginManager.Logout(this);
 ```    
+## Login events
+```java
+WTLoginManager.setIwtLoginManager(new IWTLoginManager() {
+	@Override
+	public void wtsdkUserLoggedOut() {
+	}
+	@Override
+	public void wtsdkUserLoggedIn() {
+	}
+	@Override
+	public void wtsdkUserLoginFailed(String s) {
+	}
+	@Override
+	public void wtsdkUserLogoutFailed(String s) {
+	}
+});
+```
+
 ## HelpDesk
 ### To load your organization profile
 ```java
 // LoadOrganizationActivity(Activity activity, boolean autoOpenChat)
 // Recent chat page will be opened when click on channel if autoOpenChat is true, otherwise chat list page will be opened.
-WTSDKManager.LoadOrganizationActivity(this, true);
+WTSDKManager.LoadOrganizationActivity(this, true, new IWTCompletion() {
+	@Override
+	public void onCompletion(boolean b, String s) {
+	
+	}
+});
 ```    
 ## Collaboration
 ### To view all chats
 ```java
-WTSDKManager.LoadChatListActivity(this);
+WTSDKManager.LoadChatListActivity(this, new IWTCompletion() {
+	@Override
+	public void onCompletion(boolean b, String s) {
+	
+	}
+});
 ```    
 ### To view all users
 ```java
-WTSDKManager.LoadUsersActivity(this);
+WTSDKManager.LoadUsersActivity(this, new IWTCompletion() {
+	@Override
+	public void onCompletion(boolean b, String s) {
+	
+	}
+});
 ```
 ## Push notifications
 1. Create android app in Firebase console
