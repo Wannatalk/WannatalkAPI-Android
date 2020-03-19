@@ -18,7 +18,7 @@ android {
 
 dependencies 
 {
-	implementation 'com.wannatalk.core:wannatalk:1.0.2'
+	implementation 'com.wannatalk.core:wannatalk:1.0.3'
 }
 ```
 3. That's it! Run the app
