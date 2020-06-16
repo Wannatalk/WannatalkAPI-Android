@@ -1,7 +1,6 @@
 package example.wannatalk.com.wannatalkapi_android;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +8,7 @@ import android.widget.Button;
 
 import wannatalk.wannatalksdk.WTCore.Interface.IWTCompletion;
 import wannatalk.wannatalksdk.WTCore.Interface.IWTLoginManager;
-import wannatalk.wannatalksdk.WTCore.Interface.IWTObject;
 import wannatalk.wannatalksdk.WTCore.WTSDKManager;
-import wannatalk.wannatalksdk.WTCore.WTSDKConstants;
 import wannatalk.wannatalksdk.WTLogin.WTLoginManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -88,10 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        Silent authentication without otp verification
         Bundle bundle = new Bundle();
-        bundle.putString("displayname", "<name>");
-        bundle.putString("key1", "value1");
-        bundle.putString("key2", "value2");
-        WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
+        bundle.putString("displayname", "User Full name");
+        WTLoginManager.SilentLoginActivity("<user_identifier>", bundle, this);
     }
 
 

@@ -18,7 +18,7 @@ android {
 
 dependencies 
 {
-	implementation 'com.wannatalk.core:wannatalk:1.0.3'
+	implementation 'com.wannatalk.core:wannatalk:1.0.4'
 }
 ```
 3. That's it! Run the app
@@ -31,10 +31,8 @@ WTLoginManager.StartLoginActivity(this);
 ## To link Wannatalk account with user credentials
 ```java
 Bundle bundle = new Bundle();
-bundle.putString("displayname", "<name>");
-bundle.putString("key1", "value1");
-bundle.putString("key2", "value2");
-WTLoginManager.SilentLoginActivity("<identifier>", bundle, this);
+bundle.putString("displayname", "<user full name>");
+WTLoginManager.SilentLoginActivity("<user_identifier>", bundle, this);
 ```    
 ## To unlink Wannatalk account
 ```java
@@ -50,10 +48,10 @@ WTLoginManager.setIwtLoginManager(new IWTLoginManager() {
 	public void wtsdkUserLoggedIn() {
 	}
 	@Override
-	public void wtsdkUserLoginFailed(String s) {
+	public void wtsdkUserLoginFailed(String error) {
 	}
 	@Override
-	public void wtsdkUserLogoutFailed(String s) {
+	public void wtsdkUserLogoutFailed(String error) {
 	}
 });
 ```
@@ -65,7 +63,7 @@ WTLoginManager.setIwtLoginManager(new IWTLoginManager() {
 // Recent chat page will be opened when click on channel if autoOpenChat is true, otherwise chat list page will be opened.
 WTSDKManager.LoadOrganizationActivity(this, true, new IWTCompletion() {
 	@Override
-	public void onCompletion(boolean b, String s) {
+	public void onCompletion(boolean success, String error) {
 	
 	}
 });
@@ -75,7 +73,7 @@ WTSDKManager.LoadOrganizationActivity(this, true, new IWTCompletion() {
 ```java
 WTSDKManager.LoadChatListActivity(this, new IWTCompletion() {
 	@Override
-	public void onCompletion(boolean b, String s) {
+	public void onCompletion(boolean success, String error) {
 	
 	}
 });
@@ -84,7 +82,7 @@ WTSDKManager.LoadChatListActivity(this, new IWTCompletion() {
 ```java
 WTSDKManager.LoadUsersActivity(this, new IWTCompletion() {
 	@Override
-	public void onCompletion(boolean b, String s) {
+	public void onCompletion(boolean success, String error) {
 	
 	}
 });
@@ -146,4 +144,9 @@ Chat session will end if user is inactive for timeout interval duration. If time
 ```java
 long timeoutInterval = 1800; // Default Value: 1800 seconds ~ 30 minutes
 WTSDKManager.SetInactiveChatTimeoutInterval(timeoutInterval);
+```
+### To set interval to check availble agent
+```java
+long timeInterval = 20; // default = 20 seconds
+WTSDKManager.SetAgentQueueInterval(timeInterval);  
 ```
