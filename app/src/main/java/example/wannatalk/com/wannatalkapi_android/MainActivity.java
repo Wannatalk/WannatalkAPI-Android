@@ -2,6 +2,7 @@ package example.wannatalk.com.wannatalkapi_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //        WTSDKManager.InitializeSDK();
 
         WTSDKManager.ShowGuideButton(false);
-        WTSDKManager.ShowProfileInfoPage(false);
+        WTSDKManager.ShowProfileInfoPage(true);
         WTSDKManager.AllowAddParticipants(false);
         WTSDKManager.AllowSendAudioMessage(false);
         WTSDKManager.EnableAutoTickets(true);
@@ -142,11 +143,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void wtsdkUserLoginFailed(String s) {
 
+            Log.d("Main Activity", "wtsdkUserLoginFailed " + s);
         }
 
         @Override
         public void wtsdkUserLogoutFailed(String s) {
 
+            Log.d("Main Activity", "wtsdkUserLogoutFailed: " + s);
         }
     };
 

@@ -28,9 +28,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.wannatalk.core:wannatalk:1.0.5'
+    implementation 'com.wannatalk.core:wannatalk:1.0.6'
 
-//    implementation ('com.wannatalk.core:wannatalk:1.0.5') {
+//    implementation ('com.wannatalk.core:wannatalk:1.0.6') {
 //        exclude group: 'com.amazonaws', module: 'aws-android-sdk-core'
 //        exclude group: 'com.amazonaws', module: 'aws-android-sdk-s3'
 //    }
