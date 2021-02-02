@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         WTSDKManager.LoadChatListActivity(this, new IWTCompletion() {
             @Override
             public void onCompletion(boolean b, String s) {
-
+                Log.d("MainActivity: ", "LoadChatListActivity success: " + b + " message: " + s);
             }
         });
     }

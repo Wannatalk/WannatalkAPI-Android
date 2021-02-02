@@ -5,7 +5,20 @@ The official Wannatalk Messenger Android API
 1. Request **wannatalk-services.json** from [wannatalk.ai](https://wannatalk.ai) and copy it into your application `assets` directory
 <img src="Screenshots/Screenshot1.png" width="350">
 
-2. Enable `multiDexEnabled` and add `wannatalk dependency` in your application **build.gradle**
+2. Set `compileOptions` in your application **build.gradle**
+
+```
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+	...
+}
+```
+
+3. Enable `multiDexEnabled` and add `wannatalk dependency` in your application **build.gradle**
 
 ```
 android {
@@ -18,7 +31,7 @@ android {
 
 dependencies 
 {
-	implementation 'com.wannatalk.core:wannatalk:1.0.6'
+	implementation 'com.wannatalk.core:wannatalk:1.1.0'
 }
 ```
 3. That's it! Run the app
