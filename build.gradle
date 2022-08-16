@@ -6,6 +6,10 @@ buildscript {
         maven {
             url "https://maven.google.com"
         }
+        maven {
+            url "https://www.jitpack.io"
+        }
+        mavenCentral()
         google()
     }
     dependencies {
@@ -23,7 +27,11 @@ allprojects {
         maven {
             url "https://maven.google.com"
         }
+        maven {
+            url "https://www.jitpack.io"
+        }
         google()
+        mavenCentral()
     }
 }
 
